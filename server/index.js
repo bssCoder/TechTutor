@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-
+const cors = require('cors');
 const userRoutes = require("./routes/User");
 const profileRoutes = require("./routes/Profile");
 const paymentRoutes = require("./routes/Payments");
@@ -21,12 +21,19 @@ database.connect();
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-	cors({
-		origin:"http://localhost:3000",
-		credentials:true,
-	})
-)
+ // Import the cors middleware
+const corsOptions = {
+  origin: [
+    'http://localhost:3000', // Keep this for local development
+    'https://tech-tutor-bhawani.vercel.app' // Add your Vercel app's origin
+  ],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true // If you're using cookies or authentication
+};
+
+app.use(cors(corsOptions)); 
+
+// ... your other routes and middleware
 
 app.use(
 	fileUpload({
