@@ -71,27 +71,29 @@ exports.contactUsEmail = (
         </style>
     
     </head>
-    
     <body>
-        <div class="container">
-            <a href="https://TechTutor-edtech-project.vercel.app"><img class="logo"
-                    src="https://i.ibb.co/2Z9GPmz/Logo-Full-Dark.png" alt="TechTutor Logo"></a>
-            <div class="message">Contact Form Confirmation</div>
-            <div class="body">
-                <p>Dear ${firstname} ${lastname},</p>
-                <p>Thank you for contacting us. We have received your message and will respond to you as soon as possible.
-                </p>
-                <p>Here are the details you provided:</p>
-                <p>Name: ${firstname} ${lastname}</p>
-                <p>Email: ${email}</p>
-                <p>Phone Number: ${phoneNo}</p>
-                <p>Message: ${message}</p>
-                <p>We appreciate your interest and will get back to you shortly. </p>
-            </div>
-            <div class="support">If you have any further questions or need immediate assistance, please feel free to reach
-                out to us at <a href="mailto:info@TechTutor.com">info@TechTutor.com</a>. We are here to help!</div>
+    <div class="container">
+        <a href="https://TechTutor-edtech-project.vercel.app">
+            <img class="logo" src="https://i.ibb.co/2Z9GPmz/Logo-Full-Dark.png" alt="TechTutor Logo">
+        </a>
+        <div class="message">Contact Form Confirmation</div>
+        <div class="body">
+            <p>Dear ${firstname} ${lastname},</p>
+            <p>Thank you for reaching out to us. We have received your message and sincerely appreciate your interest in our services.</p>
+            <p>Below are the details you provided:</p>
+            <p><strong>Name:</strong> ${firstname} ${lastname}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone Number:</strong> ${phoneNo}</p>
+            <p><strong>Message:</strong> ${message}</p>
+            <p>Our team is currently reviewing your message and will respond to you at the earliest convenience. Your queries and feedback are important to us.</p>
         </div>
-    </body>
+        <div class="support">
+            If you have any further questions or require immediate assistance, please do not hesitate to contact us at 
+            <a href="mailto:info@TechTutor.com">info@TechTutor.com</a>. We are here to help!
+        </div>
+    </div>
+</body>
+   
     
     </html>`
   }
