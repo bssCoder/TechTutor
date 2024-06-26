@@ -23,8 +23,8 @@ app.use(cookieParser());
  // Import the cors middleware
 const corsOptions = {
   origin: [
-    'http://localhost:3000', // Keep this for local development
-    'https://tech-tutor-bhawani.vercel.app' // Add your Vercel app's origin
+    'http://localhost:3000', 
+    'https://tech-tutor-bhawani-shankar.vercel.app'
   ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true // If you're using cookies or authentication
