@@ -36,16 +36,17 @@ function ReviewSlider() {
   // console.log(reviews)
 
   return (
-    <div className="text-white">
-      <div className="my-[50px] h-[184px] max-w-maxContentTab lg:max-w-maxContent">
+    <div className="text-white ">
+      <div className="my-[90px]  h-[284px] w-[850px] lg:max-w-maxContent">
+        {/* <p>hi</p> */}
         <Swiper
           slidesPerView={4}
-          spaceBetween={25}
+          spaceBetween={15}
           loop={true}
           freeMode={true}
           autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
+            delay: 1500,
+            disableOnInteraction: true,
           }}
           modules={[FreeMode, Pagination, Autoplay]}
           className="w-full "
@@ -53,8 +54,8 @@ function ReviewSlider() {
           {reviews.map((review, i) => {
             return (
               <SwiperSlide key={i}>
-                <div className="flex flex-col gap-3 bg-richblack-800 p-3 text-[14px] text-richblack-25">
-                  <div className="flex items-center gap-4">
+                <div className="flex flex-col gap-7 bg-richblack-800 p-3 text-[16px] h-[360px] text-richblack-25 ">
+                  <div className="flex items-center gap-4 min-w-full h-[138px] ">
                     <img
                       src={
                         review?.user?.image
@@ -71,7 +72,7 @@ function ReviewSlider() {
                       </h2>
                     </div>
                   </div>
-                  <p className="font-medium text-richblack-25">
+                  <p className="font-medium text-richblack-25 w-45 ">
                     {review?.review.split(" ").length > truncateWords
                       ? `${review?.review
                           .split(" ")
