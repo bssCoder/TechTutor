@@ -1,6 +1,6 @@
 
 # TechTutor - EdTech Platform
-:rocket: [Link to website][https://tech-tutor-bhawani-shankar.vercel.app/]
+:rocket: [TechTutor](https://tech-tutor-bhawani-shankar.vercel.app/)
 
 
 ![Main Page]
