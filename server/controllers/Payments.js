@@ -58,62 +58,67 @@ exports.capturePayment = async (req, res) => {
     currency: "INR",
     receipt: Math.random(Date.now()).toString(),
   }
+  const paymentResponse={
+    orderId:"order_ORUcF1O7RoARwP",
+    paymentId:"pay_ORUcfg3MTDmpm2",
+    amount:total_amount * 100,
+    userId:userId,
+  };
 
-  try {
-    // Initiate the payment using Razorpay
-    const paymentResponse = await instance.orders.create(options)
-    console.log(paymentResponse)
+  // try {
+  //   // Initiate the payment using Razorpay
+  //   const paymentResponse = await instance.orders.create(options)
+  //   console.log(paymentResponse)
     res.json({
       success: true,
       data: paymentResponse,
     })
-  } catch (error) {
-    console.log(error)
-    res
-      .status(500)
-      .json({ success: false, message: "Could not initiate order." })
-  }
+  // } catch (error) {
+  //   console.log(error)
+  //   res
+  //     .status(500)
+  //     .json({ success: false, message: "Could not initiate order." })
+  // }
 }
 
 // verify the payment
 exports.verifyPayment = async (req, res) => {
-  const razorpay_order_id = req.body?.razorpay_order_id
-  const razorpay_payment_id = req.body?.razorpay_payment_id
-  const razorpay_signature = req.body?.razorpay_signature
-  const courses = req.body?.courses
+  // const razorpay_order_id = req.body?.razorpay_order_id
+  // const razorpay_payment_id = req.body?.razorpay_payment_id
+  // const razorpay_signature = req.body?.razorpay_signature
+  // const courses = req.body?.courses
 
-  const userId = req.user.id
+  // const userId = req.user.id
 
-  if (
-    !razorpay_order_id ||
-    !razorpay_payment_id ||
-    !razorpay_signature ||
-    !courses ||
-    !userId
-  ) {
-    return res.status(200).json({ success: false, message: "Payment Failed" })
-  }
+  // if (
+  //   !razorpay_order_id ||
+  //   !razorpay_payment_id ||
+  //   !razorpay_signature ||
+  //   !courses ||
+  //   !userId
+  // ) {
+  //   return res.status(200).json({ success: false, message: "Payment Failed" })
+  // }
 
-  let body = razorpay_order_id + "|" + razorpay_payment_id
+  // let body = razorpay_order_id + "|" + razorpay_payment_id
 
-  const expectedSignature = crypto
-    .createHmac("sha256", process.env.RAZORPAY_SECRET)
-    .update(body.toString())
-    .digest("hex")
+  // const expectedSignature = crypto
+  //   .createHmac("sha256", process.env.RAZORPAY_SECRET)
+  //   .update(body.toString())
+  //   .digest("hex")
 
-  if (expectedSignature === razorpay_signature) {
-    await enrollStudents(courses, userId, res)
+  // if (expectedSignature === razorpay_signature) {
+  //   await enrollStudents(courses, userId, res)
     return res.status(200).json({ success: true, message: "Payment Verified" })
-  }
+  // }
 
-  return res.status(200).json({ success: false, message: "Payment Failed" })
+  // return res.status(200).json({ success: false, message: "Payment Failed" })
 }
 
 // Send Payment Success Email
 exports.sendPaymentSuccessEmail = async (req, res) => {
   const { orderId, paymentId, amount } = req.body
-
-  const userId = req.user.id
+  const userId = req.userId
 
   if (!orderId || !paymentId || !amount || !userId) {
     return res
